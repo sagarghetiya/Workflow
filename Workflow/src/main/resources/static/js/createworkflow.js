@@ -23,7 +23,7 @@ function loadJQGrid() {
 			sortable: false,
 			editoptions: { value: '1:INITIATE;2:APPROVE'},
 			stype: 'select',
-			searchoptions: { value: '1:INITIATE;2:APPROVE'},
+			searchoptions: { value: ':ALL;1:INITIATE;2:APPROVE'},
 			editable: true
 		}, {
 			name: "data",
