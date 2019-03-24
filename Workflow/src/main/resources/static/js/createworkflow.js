@@ -1,34 +1,20 @@
 $(document).ready(function() {
 	loadJQGrid();
+	$('#taskTable').jqGrid('filterToolbar');
 });
 function loadJQGrid() {
 	jQuery("#taskTable").jqGrid({
-		datatype : "clientSide",
-		data : [ {
-			"name" : "Task-1",
-			"description" : "Take Signature of officer",
-			"action" : "1",
-			"data" : "passbook.jpg",
-			"deadline" : "12-12-2021"
-		}, {
-			"name" : "Task-2",
-			"description" : "Go to manager with documents",
-			"action" : "2",
-			"data" : "passbook.jpg",
-			"deadline" : "15-12-2021"
-		}, {
-			"name" : "Task-3",
-			"description" : "Approve loan",
-			"action" : "2",
-			"data" : "passbook.jpg",
-			"deadline" : "20-12-2021"
-		}, ],
+		editurl:'clientArray',
+	    datatype: "local",
+	    loadonce:true,
 		colNames : [ 'Task name', 'Task description', 'Action', "Data", "Deadline", "Edit/Delete" ],
 		colModel : [ {
 			name : 'name',
-			editable: true
+			editable: true,
+			editoptions: {defaultValue: 'New-Task'}
 		}, {
 			name : 'description',
+			editoptions: {defaultValue: 'Add description'},
 			editable: true
 		}, {
 			name : 'action',
@@ -36,19 +22,26 @@ function loadJQGrid() {
 			edittype: 'select',
 			sortable: false,
 			editoptions: { value: '1:INITIATE;2:APPROVE'},
+			stype: 'select',
+			searchoptions: { value: '1:INITIATE;2:APPROVE'},
 			editable: true
 		}, {
-			name: "data"
+			name: "data",
+			search:false
 		},{
 			name: "deadline",
 			formatter: "date",
-			formatoptions: { newformat:'d-M-y H:i'},
+			formatoptions: {srcformat: 'd/m/Y h:i A' ,newformat: "d/m/Y h:i A" },
 			editable: true,
-			editoptions: { dataInit: function(el) { setTimeout(function() { $(el).datetimepicker(); }, 200); } } 
+			edittype: 'text',
+			sortable: true,
+			attr: { placeholder: "dd/mm/yyyy hh:mm" },
+			editoptions: {defaultValue: "25/12/2019 11:59 PM"}
 		},{
 			label: "Edit/Delete",
             name: "actions",
             width: 100,
+            search:false,
             formatter: "actions",
             formatoptions: {
                 keys: true,
@@ -61,16 +54,20 @@ function loadJQGrid() {
         ],
 		autowidth : true,
 		height : '200',
-		sortable: true,
-		sortname : 'number',
 		viewrecords : true,
-		caption : 'Task List',
-		altRows : true
+		caption : 'Task List'
 
 	});
 	jQuery("#taskTable").sortableRows();
 }
 // Adds a new row to the jqgrid on clicking add task button
 function addEditableTask(){
-    $("#taskTable").jqGrid('addRow',"new");
+	var parameters =
+	{
+	    position :"last",
+	    useDefValues : true
+	}
+    $("#taskTable").jqGrid("addRow", parameters);
+	var ids = $("#taskTable").jqGrid('getDataIDs');
+	jQuery("#taskTable").jqGrid('saveRow',ids[ids.length-1], false, 'clientArray');
 }
