@@ -15,6 +15,8 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotBlank;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 @Entity
 @Table(name = "task")
 public class Task {
@@ -57,6 +59,7 @@ public class Task {
 		return taskDescription;
 	}
 
+	@JsonFormat(pattern = "dd/MM/yyyy HH:mm a")
 	public Date getDeadLine() {
 		return deadLine;
 	}

@@ -7,13 +7,13 @@ function loadJQGrid() {
 		editurl:'clientArray',
 	    datatype: "local",
 	    loadonce:true,
-		colNames : [ 'Task name', 'Task description', 'Action', "Data", "Deadline", "Edit/Delete" ],
+		colNames : [ 'Task name', 'Task description', 'Action', /*"Data",*/ "Deadline", "Edit/Delete" ],
 		colModel : [ {
-			name : 'name',
+			name : 'taskName',
 			editable: true,
 			editoptions: {defaultValue: 'New-Task'}
 		}, {
-			name : 'description',
+			name : 'taskDescription',
 			editoptions: {defaultValue: 'Add description'},
 			editable: true
 		}, {
@@ -25,11 +25,11 @@ function loadJQGrid() {
 			stype: 'select',
 			searchoptions: { value: ':ALL;1:INITIATE;2:APPROVE'},
 			editable: true
-		}, {
+		}, /*{
 			name: "data",
 			search:false
-		},{
-			name: "deadline",
+		},*/{
+			name: "deadLine",
 			formatter: "date",
 			formatoptions: {srcformat: 'd/m/Y h:i A' ,newformat: "d/m/Y h:i A" },
 			editable: true,
@@ -71,3 +71,23 @@ function addEditableTask(){
 	var ids = $("#taskTable").jqGrid('getDataIDs');
 	jQuery("#taskTable").jqGrid('saveRow',ids[ids.length-1], false, 'clientArray');
 }
+
+$("#workflow_submit").click(function(){
+	var localGridData = $("#taskTable").jqGrid('getGridParam','data');
+	var workflow_name = $('#workflowname').val();
+	var workflow_description = $('#workflowdescription').val();
+    $.ajax({
+        type: "POST",
+        url: "/addWorkflow",
+        contentType: "application/json",
+        data : JSON.stringify({ workflowName: workflow_name, workflowDescription: workflow_description, taskList: localGridData}),
+        dataType:"json",
+        contentType: "application/json; charset=utf-8",
+        success: function(response, textStatus, xhr) {
+            alert("Workflow added successfully");
+        },
+        error: function(xhr, textStatus, errorThrown) {
+            alert("Error occured while adding workflow");
+        }
+    });
+});

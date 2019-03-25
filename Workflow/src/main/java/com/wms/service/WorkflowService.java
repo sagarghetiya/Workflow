@@ -1,12 +1,7 @@
 package com.wms.service;
 
+import com.wms.model.WorkflowWrapper;
 
-import org.springframework.stereotype.Service;
-
-@Service("workflowService")
-public class WorkflowService {
-	
-	/*@Autowired
-	WorkflowDao workflowDao;*/
-	
+public interface WorkflowService {
+	boolean doCreate(WorkflowWrapper workflowWrapper);
 }

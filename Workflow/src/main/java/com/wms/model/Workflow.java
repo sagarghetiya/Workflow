@@ -3,6 +3,7 @@ package com.wms.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -25,7 +26,7 @@ public class Workflow {
 	@NotBlank
 	private String workflowDescription;
 	
-	@OneToMany(mappedBy = "workflow", orphanRemoval = true)
+	@OneToMany(mappedBy = "workflow", orphanRemoval = true, cascade=CascadeType.ALL)
     private List<Task> taskList = new ArrayList<>();
 	
 	public Long getWorkflowId() {

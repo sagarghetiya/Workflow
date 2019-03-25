@@ -36,15 +36,15 @@
 	<div class="container">
 		<form method="post">
 			<label for="workflowname">Workflow Name</label> <input type="text"
-				id="workflowname" name="firstname"
+				id="workflowname" name="workflowname"
 				placeholder="Name of workflow ..."> <label
 				for="workflowdescription">Workflow description</label> <input
-				type="text" id="workflowdescription" name="lastname"
+				type="text" id="workflowdescription" name="workflowdescription"
 				placeholder="Description of workflow ... "> <input
 				type="button" id="addTask" value="Add Task"
 				onclick="addEditableTask()">
 			<table id="taskTable"></table>
-			<input type="button" value="Submit">
+			<input type="button" value="Submit" id="workflow_submit">
 		</form>
 	</div>
 </body>
