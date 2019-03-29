@@ -7,7 +7,7 @@ function loadJQGrid() {
 		editurl:'clientArray',
 	    datatype: "local",
 	    loadonce:true,
-		colNames : [ 'Task name', 'Task description', 'Action', /*"Data",*/ "Deadline", "Edit/Delete" ],
+		colNames : [ 'Task name', 'Task description', 'Action', "Deadline", "Edit/Delete" ],
 		colModel : [ {
 			name : 'taskName',
 			editable: true,
@@ -21,14 +21,12 @@ function loadJQGrid() {
 			formatter: 'select',
 			edittype: 'select',
 			sortable: false,
-			editoptions: { value: '1:INITIATE;2:APPROVE'},
+			editoptions: { value: 'INITIATE:INITIATE;APPROVE:APPROVE'},
 			stype: 'select',
-			searchoptions: { value: ':ALL;1:INITIATE;2:APPROVE'},
+			searchoptions: { value: ':ALL;INITIATE:INITIATE;APPROVE:APPROVE'},
 			editable: true
-		}, /*{
-			name: "data",
-			search:false
-		},*/{
+		},
+		{
 			name: "deadLine",
 			formatter: "date",
 			formatoptions: {srcformat: 'd/m/Y h:i A' ,newformat: "d/m/Y h:i A" },
@@ -73,7 +71,7 @@ function addEditableTask(){
 }
 
 $("#workflow_submit").click(function(){
-	var localGridData = $("#taskTable").jqGrid('getGridParam','data');
+	var localGridData = $("#taskTable").jqGrid('getRowData');
 	var workflow_name = $('#workflowname').val();
 	var workflow_description = $('#workflowdescription').val();
     $.ajax({
@@ -83,11 +81,19 @@ $("#workflow_submit").click(function(){
         data : JSON.stringify({ workflowName: workflow_name, workflowDescription: workflow_description, taskList: localGridData}),
         dataType:"json",
         contentType: "application/json; charset=utf-8",
-        success: function(response, textStatus, xhr) {
-            alert("Workflow added successfully");
-        },
-        error: function(xhr, textStatus, errorThrown) {
-            alert("Error occured while adding workflow");
+        statusCode : {
+        	200: function(){
+        		$('#sucess_Modal').modal('show');
+        	},
+    		500: function(){
+    			$('#failure_Modal').modal('show');
+    		}
         }
     });
 });
+
+function clearFields(){
+	document.getElementById("createWorkflowForm").reset();
+	$('#taskTable').jqGrid('GridUnload'); 
+	loadJQGrid();
+}

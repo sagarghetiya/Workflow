@@ -1,3 +1,5 @@
+<!DOCTYPE link PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
 <link rel="stylesheet"
 	href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.14/themes/base/jquery-ui.css">
 <link rel="stylesheet"
@@ -8,33 +10,26 @@
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css" />
-
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js">
 </script>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
 <script src="http://trirand.com/blog/jqgrid/js/i18n/grid.locale-en.js"></script>
 <script src="http://trirand.com/blog/jqgrid/js/jquery.jqGrid.min.js"></script>
 
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 
 <script defer src="js/createworkflow.js"></script>
 
-
-</head>
 
 <body>
 	<h1 class="text-center">
 		<b>Create Workflow</b>
 	</h1>
 	<div class="container">
-		<form method="post">
+		<form method="post" id="createWorkflowForm">
 			<label for="workflowname">Workflow Name</label> <input type="text"
 				id="workflowname" name="workflowname"
 				placeholder="Name of workflow ..."> <label
@@ -46,6 +41,36 @@
 			<table id="taskTable"></table>
 			<input type="button" value="Submit" id="workflow_submit">
 		</form>
+	</div>
+	<div id="sucess_Modal" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title">Workflow created successfully!!!... :)
+					</h4>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-success" data-dismiss="modal" onclick="clearFields()">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="failure_Modal" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title">Sorry an unexpected error occured while creating workflow!!!... :(
+					</h4>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-success" data-dismiss="modal" >Close</button>
+				</div>
+			</div>
+		</div>
 	</div>
 </body>
 

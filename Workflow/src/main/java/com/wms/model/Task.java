@@ -14,6 +14,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -22,7 +23,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 public class Task {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long taskId;
 	
 	@NotBlank
@@ -37,14 +38,14 @@ public class Task {
 	@Enumerated(EnumType.STRING)
 	private ActionEnum action;
 	
-	@NotBlank
+	@NotNull
 	private Integer sequence;
 	
 	@Enumerated(EnumType.STRING)
 	private NotificationStatusEnum notificationStatus;
 	
 	@ManyToOne
-    @JoinColumn(name = "fk_workflow")
+    @JoinColumn(name = "workflow_id")
     private Workflow workflow;
 
 	public Long getTaskId() {
@@ -59,7 +60,7 @@ public class Task {
 		return taskDescription;
 	}
 
-	@JsonFormat(pattern = "dd/MM/yyyy HH:mm a")
+	@JsonFormat(pattern = "dd/MM/yyyy h:mm aa", timezone="Asia/Kolkata")
 	public Date getDeadLine() {
 		return deadLine;
 	}

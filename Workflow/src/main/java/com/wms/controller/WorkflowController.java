@@ -1,5 +1,7 @@
 package com.wms.controller;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import com.wms.model.Workflow;
 import com.wms.model.WorkflowWrapper;
 import com.wms.service.WorkflowService;
 
@@ -31,15 +34,32 @@ public class WorkflowController {
     }
 	
 	@GetMapping({"/createworkflow"})
-    public String createworkflow() {
+    public String createWorkflow() {
         return "createworkflow";
+    }
+	
+	@GetMapping({"/updateworkflow"})
+    public String updateWorkflow() {
+        return "listWorkflow";
     }
 	
 	@PostMapping({"/addWorkflow"})
 	public ResponseEntity<Void> addWorkflow(@Valid @RequestBody WorkflowWrapper workflowWrapper, UriComponentsBuilder builder){
-		boolean flag = workflowService.doCreate(workflowWrapper);	
-		return new ResponseEntity<Void>(HttpStatus.OK);
+		boolean flag = workflowService.doCreate(workflowWrapper);
+		if(flag)
+			return new ResponseEntity<Void>(HttpStatus.OK);
+		else
+			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 	
+	@GetMapping({"/getWorkflows"})
+	public ResponseEntity<List<Workflow>> getWorkflows(){
+		List<Workflow> workflowList = workflowService.getWorkflows();
+		if(workflowList == null) {
+			return new ResponseEntity<List<Workflow>>(HttpStatus.INTERNAL_SERVER_ERROR); 
+		}else {
+			return new ResponseEntity<List<Workflow>>(workflowList, HttpStatus.OK);
+		}
+	}
 }
 	

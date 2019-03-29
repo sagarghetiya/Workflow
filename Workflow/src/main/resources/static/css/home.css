@@ -1,39 +1,52 @@
-body, html {
-	height: 98%;
+body {
+  font-family: Arial;
+  background-image: linear-gradient(to right, #ccf9cd , #6bc66d);
 }
 
-* {
-	box-sizing: border-box;
+input[type=text], select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
 }
 
-.bg-image {
-	/* The image used */
-	background-image: url("/images/home_bg.jpg");
-	/* Add the blur effect */
-	filter: blur(8px);
-	-webkit-filter: blur(8px);
-	/* Full height */
-	height: 100%;
-	/* Center and scale the image nicely */
-	background-position: center;
-	background-repeat: no-repeat;
-	background-size: cover;
+input[type=submit] {
+  width: 100%;
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
 }
 
-/* Position text in the middle of the page/image */
-.bg-text {
-	background-color: rgb(4, 30, 92); /* Fallback color */
-	background-color: rgba(4, 30, 92, 0.4);
-	/* Black w/opacity/see-through */
-	color: white;
-	font-weight: bold;
-	border: 3px solid #f1f1f1;
-	position: absolute;
-	top: 20%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	z-index: 2;
-	width: 80%;
-	padding: 20px;
-	text-align: center;
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+input[type=button] {
+  width: 100%;
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=button]:hover {
+  background-color: #45a049;
+}
+
+
+div.container {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+  width: 30%;
 }

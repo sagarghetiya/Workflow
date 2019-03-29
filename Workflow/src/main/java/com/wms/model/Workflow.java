@@ -1,5 +1,6 @@
 package com.wms.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,10 +15,12 @@ import javax.validation.constraints.NotBlank;
 
 @Entity
 @Table(name = "workflow")
-public class Workflow {
+public class Workflow implements Serializable{
+	
+	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@GeneratedValue(strategy= GenerationType.AUTO)
+	@GeneratedValue(strategy= GenerationType.IDENTITY)
 	private Long workflowId;
 	
 	@NotBlank
