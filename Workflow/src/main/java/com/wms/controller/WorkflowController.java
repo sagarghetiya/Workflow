@@ -19,47 +19,54 @@ import com.wms.service.WorkflowService;
 
 @Controller
 public class WorkflowController {
-	// Just for reference
-	/*@GetMapping({"/","/hello"})
-    public String hello(Model model, @RequestParam(value="name", required=false, defaultValue="World") String name) {
-        model.addAttribute("name", name);
-        return "hello";
-    }*/
+
 	@Autowired
 	WorkflowService workflowService;
-	
-	@GetMapping({"/","/home"})
-    public String home() {
-        return "home";
-    }
-	
-	@GetMapping({"/createworkflow"})
-    public String createWorkflow() {
-        return "createworkflow";
-    }
-	
-	@GetMapping({"/updateworkflow"})
-    public String updateWorkflow() {
-        return "listWorkflow";
-    }
-	
-	@PostMapping({"/addWorkflow"})
-	public ResponseEntity<Void> addWorkflow(@Valid @RequestBody WorkflowWrapper workflowWrapper, UriComponentsBuilder builder){
+
+	@GetMapping({ "/", "/home" })
+	public String home() {
+		return "home";
+	}
+
+	@GetMapping({ "/createworkflow" })
+	public String createWorkflow() {
+		return "createworkflow";
+	}
+
+	@GetMapping({ "/listworkflow" })
+	public String updateWorkflow() {
+		return "listWorkflow";
+	}
+
+	@PostMapping({ "/addWorkflow" })
+	public ResponseEntity<Void> addWorkflow(@Valid @RequestBody WorkflowWrapper workflowWrapper,
+			UriComponentsBuilder builder) {
 		boolean flag = workflowService.doCreate(workflowWrapper);
-		if(flag)
+		if (flag)
 			return new ResponseEntity<Void>(HttpStatus.OK);
 		else
 			return new ResponseEntity<Void>(HttpStatus.INTERNAL_SERVER_ERROR);
 	}
-	
-	@GetMapping({"/getWorkflows"})
-	public ResponseEntity<List<Workflow>> getWorkflows(){
+
+	@GetMapping({ "/getWorkflows" })
+	public ResponseEntity<List<Workflow>> getWorkflows() {
 		List<Workflow> workflowList = workflowService.getWorkflows();
-		if(workflowList == null) {
-			return new ResponseEntity<List<Workflow>>(HttpStatus.INTERNAL_SERVER_ERROR); 
-		}else {
-			return new ResponseEntity<List<Workflow>>(workflowList, HttpStatus.OK);
+		try {
+			if (workflowList == null) {
+				return new ResponseEntity<List<Workflow>>(HttpStatus.INTERNAL_SERVER_ERROR);
+			} else {
+				return ResponseEntity.ok().body(workflowList);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
+		return null;
 	}
-}
 	
+	@GetMapping({ "/getworkflow" })
+	public String getWorkflow() {
+		return "WORKING";
+	}
+	
+	
+}

@@ -17,6 +17,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "task")
@@ -45,6 +46,7 @@ public class Task {
 	private NotificationStatusEnum notificationStatus;
 	
 	@ManyToOne
+	@JsonIgnore 
     @JoinColumn(name = "workflow_id")
     private Workflow workflow;
 

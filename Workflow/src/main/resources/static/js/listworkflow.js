@@ -16,7 +16,9 @@ function loadJQGrid() {
 		}, {
 			name : 'workflowDescription'
 		}, {
-			name : 'action',
+			name : 'Edit/Delete',
+            search:false,
+			sortable: false,
 			formatter: editFormatter
 		}
 		],
@@ -28,7 +30,7 @@ function loadJQGrid() {
 	});
 }
 function editFormatter(cellValue, opts, rowObject) {
-	return "<i class='fas fa-edit' style='font-size:24px'></i>"	
+	return "<div class='text-center'><a href='getworkflow'><i class='fa fa-edit' style='font-size:24px' ></i></a>&nbsp;&nbsp;&nbsp;<a href='deleteworkflow'><i class='fa fa-trash' style='font-size:24px' ></i></a></div>";
 }
 
 		

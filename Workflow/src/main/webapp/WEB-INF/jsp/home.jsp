@@ -26,7 +26,7 @@
 	</h1>
 	<div class="container">
 		<a href="createworkflow"><input type="button" id="createWorkflow" value="Create workflow"></a>
-		<a href="/updateworkflow"><input type="button" id="editWorkflow" value="Edit/Delete workflow"></a>
+		<a href="listworkflow"><input type="button" id="editWorkflow" value="Edit/Delete workflow"></a>
 	</div>
 </body>
 </html>

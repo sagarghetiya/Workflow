@@ -22,12 +22,12 @@
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 
-<script defer src="js/createworkflow.js"></script>
+<script defer src="js/editworkflow.js"></script>
 
 
 <body>
 	<h1 class="text-center">
-		<b>Create Workflow</b>
+		<b>Update Workflow</b>
 	</h1>
 	<div class="container">
 		<form method="post" id="createWorkflowForm">
@@ -49,7 +49,7 @@
 			<!-- Modal content-->
 			<div class="modal-content">
 				<div class="modal-header">
-					<h4 class="modal-title">Workflow created successfully!!!... :)
+					<h4 class="modal-title">Workflow updated successfully!!!... :)
 					</h4>
 				</div>
 				<div class="modal-footer">
@@ -64,7 +64,7 @@
 			<!-- Modal content-->
 			<div class="modal-content">
 				<div class="modal-header">
-					<h4 class="modal-title">Sorry an unexpected error occured while creating workflow!!!... :(
+					<h4 class="modal-title">Sorry an unexpected error occured while updating workflow!!!... :(
 					</h4>
 				</div>
 				<div class="modal-footer">
