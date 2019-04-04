@@ -1,7 +1,10 @@
 package com.wms.model;
 
-import java.util.Date;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -10,18 +13,18 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "task")
-public class Task {
+public class Task implements Serializable{
+	
+	private static final long serialVersionUID = 1L;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,10 +34,12 @@ public class Task {
 	private String taskName;
 	
 	@NotBlank
+	private String message;
+	
+	@NotBlank
 	private String taskDescription;
 	
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date deadLine;
+	private String deadLine;
 	
 	@Enumerated(EnumType.STRING)
 	private ActionEnum action;
@@ -50,6 +55,22 @@ public class Task {
     @JoinColumn(name = "workflow_id")
     private Workflow workflow;
 
+	@OneToMany(mappedBy = "task", orphanRemoval = true, cascade=CascadeType.ALL)
+	private List<TaskInstance> taskInstanceList = new ArrayList<TaskInstance>();
+	
+	@ManyToOne
+	@JsonIgnore
+	@JoinColumn(name="user_group_id")
+	private UserGroup userGroup;
+	
+	public UserGroup getUserGroup() {
+		return userGroup;
+	}
+
+	public void setUserGroup(UserGroup userGroup) {
+		this.userGroup = userGroup;
+	}
+
 	public Long getTaskId() {
 		return taskId;
 	}
@@ -62,8 +83,7 @@ public class Task {
 		return taskDescription;
 	}
 
-	@JsonFormat(pattern = "dd/MM/yyyy h:mm aa", timezone="Asia/Kolkata")
-	public Date getDeadLine() {
+	public String getDeadLine() {
 		return deadLine;
 	}
 
@@ -95,7 +115,7 @@ public class Task {
 		this.taskDescription = taskDescription;
 	}
 
-	public void setDeadLine(Date deadLine) {
+	public void setDeadLine(String deadLine) {
 		this.deadLine = deadLine;
 	}
 
@@ -113,6 +133,22 @@ public class Task {
 
 	public void setWorkflow(Workflow workflow) {
 		this.workflow = workflow;
+	}
+
+	public String getMessage() {
+		return message;
+	}
+
+	public List<TaskInstance> getTaskInstanceList() {
+		return taskInstanceList;
+	}
+
+	public void setMessage(String message) {
+		this.message = message;
+	}
+
+	public void setTaskInstanceList(List<TaskInstance> taskInstanceList) {
+		this.taskInstanceList = taskInstanceList;
 	}
 	
 }

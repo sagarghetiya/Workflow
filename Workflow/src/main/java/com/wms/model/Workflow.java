@@ -32,6 +32,9 @@ public class Workflow implements Serializable{
 	@OneToMany(mappedBy = "workflow", orphanRemoval = true, cascade=CascadeType.ALL)
     private List<Task> taskList = new ArrayList<>();
 	
+	@OneToMany(mappedBy = "workflow", orphanRemoval = true, cascade=CascadeType.ALL)
+	private List<WorkflowInstance> workflowInstances = new ArrayList<>();
+	
 	public Long getWorkflowId() {
 		return workflowId;
 	}
@@ -62,6 +65,14 @@ public class Workflow implements Serializable{
 
 	public void setTaskList(List<Task> taskList) {
 		this.taskList = taskList;
+	}
+
+	public List<WorkflowInstance> getWorkflowInstances() {
+		return workflowInstances;
+	}
+
+	public void setWorkflowInstances(List<WorkflowInstance> workflowInstances) {
+		this.workflowInstances = workflowInstances;
 	}
 	
 }

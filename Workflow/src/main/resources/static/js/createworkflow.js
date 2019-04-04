@@ -7,38 +7,61 @@ function loadJQGrid() {
 		editurl:'clientArray',
 	    datatype: "local",
 	    loadonce:true,
-		colNames : [ 'Task name', 'Task description', 'Action', "Deadline", "Edit/Delete" ],
+		colNames : [ 'Task name', 'Task description', 'Message', 'Action', "Notificaton Status", "Deadline", "Edit/Delete" ],
 		colModel : [ {
 			name : 'taskName',
+            width: 60,
 			editable: true,
-			editoptions: {defaultValue: 'New-Task'}
+			editoptions: {defaultValue: 'Task-Name'}
 		}, {
 			name : 'taskDescription',
-			editoptions: {defaultValue: 'Add description'},
+			editoptions: {defaultValue: 'Description of task'},
+            width: 100,
 			editable: true
-		}, {
+		},{
+			name : 'message',
+			editoptions: {defaultValue: 'Message to be sent on completion of task'},
+			editable: true
+		}, 
+		{
 			name : 'action',
 			formatter: 'select',
 			edittype: 'select',
 			sortable: false,
-			editoptions: { value: 'INITIATE:INITIATE;APPROVE:APPROVE'},
+            width: 70,
+			editoptions: { value: 'INITIATE:INITIATE;APPROVE:APPROVE;REJECT:REJECT'},
 			stype: 'select',
-			searchoptions: { value: ':ALL;INITIATE:INITIATE;APPROVE:APPROVE'},
+			searchoptions: { value: ':ALL;INITIATE:INITIATE;APPROVE:APPROVE;REJECT:REJECT'},
+			editable: true
+		},{
+			name : 'notificationStatus',
+			formatter: 'select',
+			edittype: 'select',
+			sortable: false,
+			 width: 70,
+			editoptions: { value: 'ANY:ANY;ALL:ALL'},
+			stype: 'select',
+			searchoptions: { value: ':ALL;ANY:ANY;ONE:ONE'},
 			editable: true
 		},
 		{
-			name: "deadLine",
+			/*name: "deadLine",
 			formatter: "date",
 			formatoptions: {srcformat: 'd/m/Y h:i A' ,newformat: "d/m/Y h:i A" },
 			editable: true,
 			edittype: 'text',
 			sortable: true,
 			attr: { placeholder: "dd/mm/yyyy hh:mm" },
-			editoptions: {defaultValue: "25/12/2019 11:59 PM"}
+			editoptions: {defaultValue: "25/12/2019 11:59 PM"}*/
+			name:"deadLine",
+			editable: true,
+			editoptions: {defaultValue: 'Relative(dd)/Absolute(dd/mm/yyyy hh:mm)'},
+			sortable: false
+				
 		},{
 			label: "Edit/Delete",
             name: "actions",
-            width: 100,
+            width: 40,
             search:false,
             formatter: "actions",
             formatoptions: {
