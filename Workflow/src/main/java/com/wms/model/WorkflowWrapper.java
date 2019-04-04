@@ -7,6 +7,7 @@ public class WorkflowWrapper {
 	public String workflowName;
 	public String workflowDescription;
 	public List<Task> taskList;
+	public List<UserGroup> userGroupList;
 
 	public String getWorkflowName() {
 		return workflowName;
@@ -32,4 +33,12 @@ public class WorkflowWrapper {
 		this.taskList = taskList;
 	}
 
+	public List<UserGroup> getUserGroupList() {
+		return userGroupList;
+	}
+
+	public void setUserGroupList(List<UserGroup> userGroupList) {
+		this.userGroupList = userGroupList;
+	}
+	
 }

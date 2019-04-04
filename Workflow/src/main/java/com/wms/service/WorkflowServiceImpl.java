@@ -26,9 +26,13 @@ public class WorkflowServiceImpl implements WorkflowService {
 			Integer sequence = 1;
 			// Since it is a bi-directional mapping we need to set workflow in task and task
 			// in workflow
+			int i=0;
 			for (Task task : workflowWrapper.getTaskList()) {
 				task.setWorkflow(workflow);
+				task.setUserGroup(workflowWrapper.userGroupList.get(i));
 				task.setSequence(sequence++);
+				workflowWrapper.userGroupList.get(i).getTaskList().add(task);
+				i++;
 			}
 			workflowDao.doCreate(workflow);
 		} catch (Exception e) {

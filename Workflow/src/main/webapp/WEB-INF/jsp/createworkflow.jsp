@@ -6,7 +6,7 @@
 	href="http://trirand.com/blog/jqgrid/themes/ui.jqgrid.css">
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
 <link rel="stylesheet" href="css/createworkflow.css">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
@@ -22,6 +22,8 @@
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
 <script defer src="js/createworkflow.js"></script>
 
 
