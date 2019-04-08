@@ -13,26 +13,26 @@ import com.wms.model.UserGroup;
 public class UserServiceImpl implements UserService {
 
 	@Autowired
-	private UserDao ud;
+	private UserDao userDao;
 
 	@Override
-	public void addUser(User u) {
-		ud.addUser(u);
+	public void addUser(User user) {
+		userDao.addUser(user);
 	}
 
 	@Override
 	public User getUser(Long userid) {
-		return ud.getUser(userid);
+		return userDao.getUser(userid);
 	}
 
 	@Override
 	public List<User> getAllUsers() {
-		return ud.getAllUsers();
+		return userDao.getAllUsers();
 	}
 
 	@Override
 	public void addUserGroup(UserGroup grp) {
-		 ud.addUserGroup(grp);
+		 userDao.addUserGroup(grp);
 		/*
 		 * try { UserGroup ugrp = new UserGroup(); ugrp.setUsers(grp.getUserList());
 		 * ugrp.setUserGroupName(grp.getUserGroupName());
@@ -40,19 +40,19 @@ public class UserServiceImpl implements UserService {
 		 * it is a bi-directional mapping we need to set workflow in task and task // in
 		 * workflow for (Task task : workflowWrapper.getTaskList()) {
 		 * task.setWorkflow(workflow); task.setSequence(sequence++); }
-		 * ud.addUserGroup(ugrp); } catch (Exception e) { e.printStackTrace(); return
+		 * userDao.addUserGroup(ugrp); } catch (Exception e) { e.printStackTrace(); return
 		 * false; } return true;
 		 */
 	}
 
 	@Override
 	public UserGroup getGroup(Long grpid) {
-		return ud.getGroup(grpid);
+		return userDao.getGroup(grpid);
 	}
 
 	@Override
 	public List<UserGroup> getAllGroups() {
-		return ud.getAllGroups();
+		return userDao.getAllGroups();
 	}
 
 

@@ -28,7 +28,19 @@ public class TaskInstance implements Serializable{
 	
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date taskInstaceDeadLine;
-	
+
+	private String status;
+
+	private String username;
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
 	@ManyToOne
 	@JsonIgnore
 	@JoinColumn(name="task_id")
@@ -38,6 +50,19 @@ public class TaskInstance implements Serializable{
 	@JsonIgnore
 	@JoinColumn(name="workflow_instance_id")
 	private WorkflowInstance workflowInstance;
+
+	@ManyToOne
+	@JsonIgnore
+	@JoinColumn(name = "user_id")
+	private User user;
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
 
 	public Long getTaskInstanceId() {
 		return taskInstanceId;
@@ -71,5 +96,13 @@ public class TaskInstance implements Serializable{
 	public void setTaskInstaceDeadLine(Date taskInstaceDeadLine) {
 		this.taskInstaceDeadLine = taskInstaceDeadLine;
 	}
-	
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
 }

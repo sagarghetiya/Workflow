@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -32,7 +33,7 @@ public class Workflow implements Serializable{
 	@OneToMany(mappedBy = "workflow", orphanRemoval = true, cascade=CascadeType.ALL)
     private List<Task> taskList = new ArrayList<>();
 	
-	@OneToMany(mappedBy = "workflow", orphanRemoval = true, cascade=CascadeType.ALL)
+	@OneToMany(mappedBy = "workflow", orphanRemoval = true, cascade=CascadeType.ALL , fetch=FetchType.EAGER)
 	private List<WorkflowInstance> workflowInstances = new ArrayList<>();
 	
 	public Long getWorkflowId() {

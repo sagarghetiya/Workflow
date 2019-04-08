@@ -50,8 +50,8 @@ public class WorkflowController {
 
 	@GetMapping({ "/getWorkflows" })
 	public ResponseEntity<List<Workflow>> getWorkflows() {
-		List<Workflow> workflowList = workflowService.getWorkflows();
 		try {
+			List<Workflow> workflowList = workflowService.getWorkflows();
 			if (workflowList == null) {
 				return new ResponseEntity<List<Workflow>>(HttpStatus.INTERNAL_SERVER_ERROR);
 			} else {
@@ -62,11 +62,5 @@ public class WorkflowController {
 		}
 		return null;
 	}
-	
-	@GetMapping({ "/getworkflow" })
-	public String getWorkflow() {
-		return "WORKING";
-	}
-	
 	
 }

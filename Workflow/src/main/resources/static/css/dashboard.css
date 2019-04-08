@@ -1,0 +1,34 @@
+.square {
+	height: 150px;
+	width: 150px;
+	background-color: #cc0000;
+	margin-left : 150px;
+	margin-top : 150px;
+}
+
+#dashboardtable {
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	border-collapse: collapse;
+	width: 100%;
+}
+
+#dashboardtable td, #dashboardtable th {
+	border: 1px solid #ddd;
+	padding: 8px;
+}
+
+#dashboardtable tr:nth-child(even) {
+	background-color: #f2f2f2;
+}
+
+#dashboardtable tr:hover {
+	background-color: #ddd;
+}
+
+#dashboardtable th {
+	padding-top: 12px;
+	padding-bottom: 12px;
+	text-align: left;
+	background-color: #4CAF50;
+	color: white;
+}

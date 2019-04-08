@@ -13,15 +13,27 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import com.wms.model.User;
 import com.wms.model.UserGroup;
 import com.wms.service.UserService;
 
 @Controller
+
 public class UserController {
 	@Autowired
 	UserService userService;
 	
-	@PostMapping("/addusergroup")
+	@GetMapping({ "/createuser" })
+	public String createUser() {
+		return "createuser";
+	}
+	
+	@GetMapping({ "/createusergroup" })
+	public String createUserGroup() {
+		return "createusergroup";
+	}
+	
+	@PostMapping({"/addusergroup"})
 	public ResponseEntity<Void> addUserGroup(@Valid @RequestBody UserGroup userGroup, UriComponentsBuilder builder) {
 		userService.addUserGroup(userGroup);
 		return new ResponseEntity<Void>(HttpStatus.OK); 
@@ -32,4 +44,15 @@ public class UserController {
 		return new ResponseEntity<List<UserGroup>>(userService.getAllGroups(),HttpStatus.OK);
 	}
 	
+	@PostMapping("/adduser")
+	public ResponseEntity<Void> addUser(@Valid @RequestBody User user, UriComponentsBuilder builder){
+		userService.addUser(user);
+		return new ResponseEntity<Void>(HttpStatus.OK);
+	}
+	
+	@GetMapping("/getallusers")
+	public ResponseEntity<List<User>> getAllUsers(){
+		List<User> userList = userService.getAllUsers();
+		return new ResponseEntity<List<User>>(userList,HttpStatus.OK);
+	}
 }

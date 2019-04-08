@@ -27,6 +27,9 @@
 	<div class="container">
 		<a href="createworkflow"><input type="button" id="createWorkflow" value="Create workflow"></a>
 		<a href="listworkflow"><input type="button" id="editWorkflow" value="Edit/Delete workflow"></a>
+		<a href="dashboard"><input type="button" id="dashboard" value="View Dashboard"></a>
+		<a href="createuser"><input type="button" id="createuser" value="Create User"></a>
+		<a href="createusergroup"><input type="button" id="createusergroup" value="Create User Group"></a>
 	</div>
 </body>
 </html>

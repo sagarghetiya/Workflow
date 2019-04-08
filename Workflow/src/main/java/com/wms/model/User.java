@@ -25,17 +25,38 @@ public class User {
 	private Long userId;
 	@NotNull
 	private String userName;
+	private String firstName;
+	private String lastName;
+	private String email;
 	private String designation;
 	private String password;
 	
 	@OneToMany(mappedBy = "user", orphanRemoval = true, cascade=CascadeType.ALL)
 	private List<WorkflowInstance> workflowInstanceList = new ArrayList<>();
-	
+
+	@OneToMany(mappedBy = "user", orphanRemoval = true, cascade = CascadeType.ALL)
+	private List<TaskInstance> taskInstanceList = new ArrayList<>();
+
 	@ManyToMany
-	@JoinTable(name = "user_group_map", joinColumns = @JoinColumn(name = "fk_user"), 
-	inverseJoinColumns = @JoinColumn(name="fk_group"))
+	@JoinTable(name = "user_group_map", joinColumns = @JoinColumn(name = "fk_user"), inverseJoinColumns = @JoinColumn(name = "fk_group"))
 	@JsonIgnoreProperties("userList")
-    private List<UserGroup> groupList = new ArrayList<>();
+	private List<UserGroup> groupList = new ArrayList<>();
+
+	public List<WorkflowInstance> getWorkflowInstanceList() {
+		return workflowInstanceList;
+	}
+
+	public void setWorkflowInstanceList(List<WorkflowInstance> workflowInstanceList) {
+		this.workflowInstanceList = workflowInstanceList;
+	}
+
+	public List<TaskInstance> getTaskInstanceList() {
+		return taskInstanceList;
+	}
+
+	public void setTaskInstanceList(List<TaskInstance> taskInstanceList) {
+		this.taskInstanceList = taskInstanceList;
+	}
 
 	public Long getUserId() {
 		return userId;
@@ -76,5 +97,32 @@ public class User {
 	public void setGroupList(List<UserGroup> groupList) {
 		this.groupList = groupList;
 	}
-	
+
+	public void addWorkflowInstance(WorkflowInstance workflowInstance) {
+		workflowInstanceList.add(workflowInstance);
+	}
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
 }

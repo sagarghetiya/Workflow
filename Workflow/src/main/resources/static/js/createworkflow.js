@@ -91,7 +91,7 @@ function loadJQGrid(option) {
 									name : "deadLine",
 									editable : true,
 									editoptions : {
-										defaultValue : 'Relative(dd)/Absolute(dd/mm/yyyy hh:mm)'
+										defaultValue : 'Relative(dd)/Absolute(dd/mm/yyyy hh:MM a)'
 									},
 									sortable : false
 
