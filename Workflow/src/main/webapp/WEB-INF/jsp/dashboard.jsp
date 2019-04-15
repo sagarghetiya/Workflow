@@ -22,9 +22,24 @@
 <meta charset="UTF-8">
 <title>Workflow Management System:Dashboard</title>
 </head>
-<body>
-	<input type="button" id="display">Show
-	</input>
+<body onload="loadData()">
+	<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Welcome Admin</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active" ><a id="activeBar" href="dashboard">Dashboard</a></li>
+      <li><a href="createworkflow">Create workflow</a></li>
+      <li><a href="listworkflow">Delete workflow</a></li>
+      <li><a href="createuser">Create user</a></li>    
+      <li><a href="createusergroup">Create user group</a></li>
+    </ul>
+  </div>
+</nav>
+	<h1 class="text-center" style="margin-top: 60px">
+		<b>Dashboard</b>
+	</h1>
 	<div style="text-align: center">
 		<div style="display: inline-block">
 			<div

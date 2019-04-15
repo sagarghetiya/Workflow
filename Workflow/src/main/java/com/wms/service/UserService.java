@@ -6,8 +6,8 @@ import com.wms.model.User;
 import com.wms.model.UserGroup;
 
 public interface UserService {
-	
-	void addUser(User u);
+
+	boolean doRegister(User user);
 	User getUser(Long userid);
 	List<User> getAllUsers();
 	

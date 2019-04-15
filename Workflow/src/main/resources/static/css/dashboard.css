@@ -6,6 +6,12 @@
 	margin-top : 150px;
 }
 
+#activeBar {
+
+ background-color: #4CAF50;
+}
+
+
 #dashboardtable {
 	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
 	border-collapse: collapse;

@@ -1,5 +1,4 @@
-
-$("#display").click(function() {
+function loadData(){
 	var totalNoOfWorkflowInstance = 0;
 	$.getJSON("http://localhost:8888/getWorkflows", function(json) {
 		$("#dashboardtable").empty();
@@ -27,13 +26,13 @@ $("#display").click(function() {
 				dashboardtable.append("<th colspan='6'>Workflow::"+json[i].workflowInstances[j].workflowInstanceId+"::"+json[i].workflowName+"</th>")
 				for(var k =0 ;k<json[i].taskList.length;k++) {	
 					if(json[i].workflowInstances[j].taskInstanceList[k].status == "Completed"){
-						dashboardtable.append("<tr style='background-color:#a1f49a'><td>"+json[i].taskList[k].taskName+"</td><td>"+json[i].taskList[k].taskDescription+"</td><td>"+json[i].workflowInstances[j].taskInstanceList[k].status+"</td><td>"+json[i].workflowInstances[j].taskInstanceList[k].username+"</td><td>"+json[i].taskList[k].action+"</td><td>"+json[i].workflowInstances[j].taskInstanceList[k].taskInstaceDeadLine+"</td></tr>");
+						dashboardtable.append("<tr style='background-color:#a1f49a'><td>"+json[i].taskList[k].taskName+"</td><td>"+json[i].taskList[k].taskDescription+"</td><td>"+json[i].workflowInstances[j].taskInstanceList[k].status+"</td><td>"+json[i].workflowInstances[j].taskInstanceList[k].username+"</td><td>Approved</td><td>"+json[i].workflowInstances[j].taskInstanceList[k].taskInstaceDeadLine+"</td></tr>");
 					} else if(json[i].workflowInstances[j].taskInstanceList[k].status == "Running"){
-						dashboardtable.append("<tr style='background-color:#faff70'><td>"+json[i].taskList[k].taskName+"</td><td>"+json[i].taskList[k].taskDescription+"</td><td>"+json[i].workflowInstances[j].taskInstanceList[k].status+"</td><td>"+json[i].workflowInstances[j].taskInstanceList[k].username+"</td><td>"+json[i].taskList[k].action+"</td><td>"+json[i].workflowInstances[j].taskInstanceList[k].taskInstaceDeadLine+"</td></tr>");
+						dashboardtable.append("<tr style='background-color:#faff70'><td>"+json[i].taskList[k].taskName+"</td><td>"+json[i].taskList[k].taskDescription+"</td><td>"+json[i].workflowInstances[j].taskInstanceList[k].status+"</td><td>"+json[i].workflowInstances[j].taskInstanceList[k].username+"</td><td>Awaiting Approval</td><td>"+json[i].workflowInstances[j].taskInstanceList[k].taskInstaceDeadLine+"</td></tr>");
 					} else if(json[i].workflowInstances[j].taskInstanceList[k].status == "Pending"){
-						dashboardtable.append("<tr style='background-color:#8acbe2'><td>"+json[i].taskList[k].taskName+"</td><td>"+json[i].taskList[k].taskDescription+"</td><td>"+json[i].workflowInstances[j].taskInstanceList[k].status+"</td><td>"+json[i].workflowInstances[j].taskInstanceList[k].username+"</td><td>"+json[i].taskList[k].action+"</td><td>"+json[i].workflowInstances[j].taskInstanceList[k].taskInstaceDeadLine+"</td></tr>");
+						dashboardtable.append("<tr style='background-color:#8acbe2'><td>"+json[i].taskList[k].taskName+"</td><td>"+json[i].taskList[k].taskDescription+"</td><td>"+json[i].workflowInstances[j].taskInstanceList[k].status+"</td><td>"+json[i].workflowInstances[j].taskInstanceList[k].username+"</td><td>Awaiting Approval</td><td>"+json[i].workflowInstances[j].taskInstanceList[k].taskInstaceDeadLine+"</td></tr>");
 					} else{
-						dashboardtable.append("<tr style='background-color:#ff817c'><td>"+json[i].taskList[k].taskName+"</td><td>"+json[i].taskList[k].taskDescription+"</td><td>"+json[i].workflowInstances[j].taskInstanceList[k].status+"</td><td>"+json[i].workflowInstances[j].taskInstanceList[k].username+"</td><td>"+json[i].taskList[k].action+"</td><td>"+json[i].workflowInstances[j].taskInstanceList[k].taskInstaceDeadLine+"</td></tr>");
+						dashboardtable.append("<tr style='background-color:#ff817c'><td>"+json[i].taskList[k].taskName+"</td><td>"+json[i].taskList[k].taskDescription+"</td><td>"+json[i].workflowInstances[j].taskInstanceList[k].status+"</td><td>"+json[i].workflowInstances[j].taskInstanceList[k].username+"</td><td>Awaiting Approval</td><td>"+json[i].workflowInstances[j].taskInstanceList[k].taskInstaceDeadLine+"</td></tr>");
 					}
 					
 				}
@@ -42,4 +41,4 @@ $("#display").click(function() {
 		}
 	});
 
-});
+}

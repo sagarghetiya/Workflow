@@ -36,11 +36,25 @@
 	src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
 <script defer src="js/createuser.js"></script>
 <body>
-	<h1 class="text-center">
-		<b>Add User</b>
+	<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Welcome Admin</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li><a href="dashboard">Dashboard</a></li>
+      <li><a href="createworkflow">Create workflow</a></li>
+      <li><a href="listworkflow">Delete workflow</a></li>
+      <li class="active"><a id="activeBar" href="createuser">Create user</a></li>    
+      <li><a href="createusergroup">Create user group</a></li>
+    </ul>
+  </div>
+</nav>
+	<h1 class="text-center" style="margin-top: 60px">
+		<b>Create User</b>
 	</h1>
 
-	<div class="container" style="margin-top: 80px">
+	<div class="container" style="margin-top: 150px">
 		<div>
 			<img src="/images/usersurround.png" height="400px" width="400px">
 		</div>
@@ -91,7 +105,6 @@
 		</div>
 	</div>
 </body>
-
 </html>
 <script>
 	

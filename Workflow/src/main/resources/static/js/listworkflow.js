@@ -50,10 +50,3 @@ function editFormatter(cellValue, opts, rowObject) {
 		
 		
 		
-		
-		
-		
-		
-		
-		
-		

@@ -1,3 +1,9 @@
+#activeBar {
+
+ background-color: #4CAF50;
+}
+
+
 body {
   font-family: Arial;
   background-image: linear-gradient(to right, #ccf9cd , #6bc66d);

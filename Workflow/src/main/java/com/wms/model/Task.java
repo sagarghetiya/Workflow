@@ -41,9 +41,6 @@ public class Task implements Serializable{
 	
 	private String deadLine;
 	
-	@Enumerated(EnumType.STRING)
-	private ActionEnum action;
-	
 	@NotNull
 	private Integer sequence;
 	
@@ -87,10 +84,6 @@ public class Task implements Serializable{
 		return deadLine;
 	}
 
-	public ActionEnum getAction() {
-		return action;
-	}
-
 	public Integer getSequence() {
 		return sequence;
 	}
@@ -117,10 +110,6 @@ public class Task implements Serializable{
 
 	public void setDeadLine(String deadLine) {
 		this.deadLine = deadLine;
-	}
-
-	public void setAction(ActionEnum action) {
-		this.action = action;
 	}
 
 	public void setSequence(Integer sequence) {

@@ -22,7 +22,7 @@ function loadJQGrid(option) {
 						datatype : "local",
 						loadonce : true,
 						colNames : [ 'Task name', 'Task description',
-								'Message', 'Action', "Notificaton Status",
+								'Message', "Notificaton Status",
 								"Deadline", "UserGroup", "Edit/Delete" ],
 						colModel : [
 								{
@@ -45,21 +45,6 @@ function loadJQGrid(option) {
 									name : 'message',
 									editoptions : {
 										defaultValue : 'Message to be sent on completion of task'
-									},
-									editable : true
-								},
-								{
-									name : 'action',
-									formatter : 'select',
-									edittype : 'select',
-									sortable : false,
-									width : 70,
-									editoptions : {
-										value : 'INITIATE:INITIATE;APPROVE:APPROVE;REJECT:REJECT'
-									},
-									stype : 'select',
-									searchoptions : {
-										value : ':ALL;INITIATE:INITIATE;APPROVE:APPROVE;REJECT:REJECT'
 									},
 									editable : true
 								},

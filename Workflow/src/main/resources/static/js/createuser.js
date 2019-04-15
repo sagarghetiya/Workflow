@@ -70,7 +70,7 @@ $("#user_submit").click(function() {
 			200 : function() {
 				$('#sucess_Modal').modal('show');
 			},
-			500 : function() {
+			201 : function() {
 				$('#failure_Modal').modal('show');
 			}
 		}

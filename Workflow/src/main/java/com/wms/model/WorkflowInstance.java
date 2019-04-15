@@ -41,6 +41,16 @@ public class WorkflowInstance implements Serializable{
 	private User user;
 
 	private String username;
+	
+	private String status;
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
 
 	public String getUsername() {
 		return username;

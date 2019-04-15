@@ -15,9 +15,18 @@ public class UserServiceImpl implements UserService {
 	@Autowired
 	private UserDao userDao;
 
+
 	@Override
-	public void addUser(User user) {
-		userDao.addUser(user);
+	public synchronized boolean doRegister(User user) {
+		if (userDao.registerExists(user.getUserName(), user.getEmail())) {
+			System.out.println("User is already there");
+			return false;
+
+		} else {
+			userDao.doRegister(user);
+			System.out.println("User is not there so added");
+			return true;
+		}
 	}
 
 	@Override
