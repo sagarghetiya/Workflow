@@ -9,4 +9,5 @@ public interface WorkFlowDao {
 	boolean doCreate(Workflow workflow);
 	
 	List<Workflow> getWorkflows();
+	void deleteWorkflow(String deleteValue);
 }

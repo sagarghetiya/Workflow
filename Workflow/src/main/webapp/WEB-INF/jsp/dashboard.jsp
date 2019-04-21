@@ -26,7 +26,7 @@
 	<nav class="navbar navbar-default navbar-fixed-top">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#">Welcome Admin</a>
+      <a class="navbar-brand" href="dashboard">Welcome Admin</a>
     </div>
     <ul class="nav navbar-nav">
       <li class="active" ><a id="activeBar" href="dashboard">Dashboard</a></li>

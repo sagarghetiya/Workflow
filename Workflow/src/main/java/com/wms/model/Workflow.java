@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -36,6 +37,17 @@ public class Workflow implements Serializable{
 	@OneToMany(mappedBy = "workflow", orphanRemoval = true, cascade=CascadeType.ALL , fetch=FetchType.EAGER)
 	private List<WorkflowInstance> workflowInstances = new ArrayList<>();
 	
+	@Column(nullable = false, columnDefinition = "TINYINT", length = 1)
+	private boolean isDeleted;
+	
+	public boolean getIsDeleted() {
+		return isDeleted;
+	}
+
+	public void setIsDeleted(boolean isDeleted) {
+		this.isDeleted = isDeleted;
+	}
+
 	public Long getWorkflowId() {
 		return workflowId;
 	}

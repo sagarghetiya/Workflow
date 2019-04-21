@@ -29,4 +29,22 @@ public class WorkFlowDaoImpl implements WorkFlowDao{
 		String hql = "FROM Workflow as workflow";
 		return (List<Workflow>) entityManager.createQuery(hql).getResultList();
 	}
+	
+	@Override
+	public void deleteWorkflow(String deleteValue) {
+		String[] separateValues = deleteValue.split("_");
+		Long workflowId = Long.parseLong(separateValues[0]);
+		int flag = Integer.parseInt(separateValues[1]);
+		
+		boolean isDeleted;
+		if(flag == 1) {
+			isDeleted = true;
+		} else {
+			isDeleted = false;
+		}
+		int count = (entityManager.createQuery(
+				"update Workflow workflow set workflow.isDeleted =?1 where workflow.workflowId = ?2"))
+						.setParameter(1, isDeleted)
+						.setParameter(2, workflowId).executeUpdate();
+	}
 }

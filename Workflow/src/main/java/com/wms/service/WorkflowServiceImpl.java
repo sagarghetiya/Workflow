@@ -23,6 +23,7 @@ public class WorkflowServiceImpl implements WorkflowService {
 			workflow.setTaskList(workflowWrapper.getTaskList());
 			workflow.setWorkflowDescription(workflowWrapper.getWorkflowDescription());
 			workflow.setWorkflowName(workflowWrapper.getWorkflowName());
+			workflow.setIsDeleted(false);
 			Integer sequence = 1;
 			// Since it is a bi-directional mapping we need to set workflow in task and task
 			// in workflow
@@ -55,5 +56,10 @@ public class WorkflowServiceImpl implements WorkflowService {
 			return workflowList;
 		}
 		return null;
+	}
+	
+	@Override
+	public void deleteWorkflow(String deleteValue) {
+		workflowDao.deleteWorkflow(deleteValue);
 	}
 }

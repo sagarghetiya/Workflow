@@ -8,4 +8,5 @@ import com.wms.model.WorkflowWrapper;
 public interface WorkflowService {
 	boolean doCreate(WorkflowWrapper workflowWrapper);
 	List<Workflow> getWorkflows();
+	void deleteWorkflow(String deleteValue);
 }
