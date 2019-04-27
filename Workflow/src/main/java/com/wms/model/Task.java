@@ -33,7 +33,6 @@ public class Task implements Serializable{
 	@NotBlank
 	private String taskName;
 	
-	@NotBlank
 	private String message;
 	
 	@NotBlank

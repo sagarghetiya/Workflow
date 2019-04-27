@@ -44,27 +44,19 @@
 		<div style="display: inline-block">
 			<div
 				style="height: 200px; width: 220px; background-color: #3e74e8; align-items: center"
-				id="total">
-				<h3 style="display: inline-block">Workflows</h3>
-				<h4>20</h4>
+				id="totalworkflowinstance">
 			</div>
 			<div
 				style="height: 200px; width: 220px; background-color: #e8305b; margin-left: 280px; margin-top: -200px; align-items: center"
-				id="total1">
-				<h3 style="display: inline-block">Workflows</h3>
-				<h4>20</h4>
+				id="completedWorkflowInstance">
 			</div>
 			<div
 				style="height: 200px; width: 220px; background-color: #f26321; margin-left: 560px; margin-top: -200px; align-items: center"
-				id="total2">
-				<h3 style="display: inline-block">Workflows</h3>
-				<h4>20</h4>
+				id="pendingWorkflowInstance">
 			</div>
 			<div
 				style="height: 200px; width: 220px; background-color: #963ae8; margin-left: 840px; margin-top: -200px; align-items: center"
-				id="total3">
-				<h3 style="display: inline-block">Workflows</h3>
-				<h4>20</h4>
+				id="rejectWorkflowInstance">	
 			</div>
 		</div>
 		<table id="dashboardtable" align="center"

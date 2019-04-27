@@ -21,8 +21,7 @@ function loadJQGrid(option) {
 						editurl : 'clientArray',
 						datatype : "local",
 						loadonce : true,
-						colNames : [ 'Task name', 'Task description',
-								'Message', "Notificaton Status",
+						colNames : [ 'Task name', 'Task description', "Notificaton Status",
 								"Deadline", "UserGroup", "Edit/Delete" ],
 						colModel : [
 								{
@@ -42,13 +41,6 @@ function loadJQGrid(option) {
 									editable : true
 								},
 								{
-									name : 'message',
-									editoptions : {
-										defaultValue : 'Message to be sent on completion of task'
-									},
-									editable : true
-								},
-								{
 									name : 'notificationStatus',
 									formatter : 'select',
 									edittype : 'select',
@@ -64,15 +56,6 @@ function loadJQGrid(option) {
 									editable : true
 								},
 								{
-									/*
-									 * name: "deadLine", formatter: "date",
-									 * formatoptions: {srcformat: 'd/m/Y h:i A'
-									 * ,newformat: "d/m/Y h:i A" }, editable:
-									 * true, edittype: 'text', sortable: true,
-									 * attr: { placeholder: "dd/mm/yyyy hh:mm" },
-									 * editoptions: {defaultValue: "25/12/2019
-									 * 11:59 PM"}
-									 */
 									name : "deadLine",
 									editable : true,
 									editoptions : {

@@ -1,28 +1,22 @@
 function loadData(){
 	var totalNoOfWorkflowInstance = 0;
+	var totalcompletedWorkflowInstance = 0;
+	var totalpendingWorkflowInstance = 0;
+	var totalrejectWorkflowInstance = 0;
 	$.getJSON("http://localhost:8888/getWorkflows", function(json) {
 		$("#dashboardtable").empty();
 		var dashboardtable = $("#dashboardtable");
-		
-//		//$("#total").empty();
-//		var total = $("#total");
-//		total.append("<h3>Total</h3><h3>Workflows</h3><h4>43</h4>");
-//		
-//		//$("#total1").empty();
-//		var total1 = $("#total1");
-//		total1.append("<h3>Total</h3><h3>Workflows</h3><h4>43</h4>");
-//		
-//		//$("#total2").empty();
-//		var total2 = $("#total2");
-//		total2.append("<h3>Total</h3><h3>Workflows</h3><h4>43</h4>");
-//		
-//		//$("#total3").empty();
-//		var total3 = $("#total3");
-//		total3.append("<h3>Total</h3><h3>Workflows</h3><h4>43</h4>");
-		
+
 		for (var i = 0; i < json.length; i++) {
 			totalNoOfWorkflowInstance = totalNoOfWorkflowInstance + json[i].workflowInstances.length;
 			for (var j= 0 ; j < json[i].workflowInstances.length ; j++){
+				if(json[i].workflowInstances[j].status == "Completed"){
+					totalcompletedWorkflowInstance++;
+				} else if(json[i].workflowInstances[j].status == "Running"){
+					totalpendingWorkflowInstance++;
+				} else {
+					totalrejectWorkflowInstance++;
+				}
 				dashboardtable.append("<th colspan='6'>Workflow::"+json[i].workflowInstances[j].workflowInstanceId+"::"+json[i].workflowName+"</th>")
 				for(var k =0 ;k<json[i].taskList.length;k++) {	
 					if(json[i].workflowInstances[j].taskInstanceList[k].status == "Completed"){
@@ -39,6 +33,22 @@ function loadData(){
 			}
 			
 		}
+		
+		$("#totalworkflowinstance").empty();
+		var totalworkflowinstance = $("#totalworkflowinstance");	
+		totalworkflowinstance.append("<h3 style='display: inline-block'>Total Workflow Instances</h3><h4>"+totalNoOfWorkflowInstance+"</h4>");
+		
+		$("#completedWorkflowInstance").empty();
+		var completedWorkflowInstance = $("#completedWorkflowInstance");	
+		completedWorkflowInstance.append("<h3 style='display: inline-block'>Total Completed Workflow Instances</h3><h4>"+totalcompletedWorkflowInstance+"</h4>");
+		
+		$("#pendingWorkflowInstance").empty();
+		var pendingWorkflowInstance = $("#pendingWorkflowInstance");	
+		pendingWorkflowInstance.append("<h3 style='display: inline-block'>Total Pending Workflow Instances</h3><h4>"+totalpendingWorkflowInstance+"</h4>");
+		
+		$("#rejectWorkflowInstance").empty();
+		var rejectWorkflowInstance = $("#rejectWorkflowInstance");	
+		rejectWorkflowInstance.append("<h3 style='display: inline-block'>Total Rejected Workflow Instances</h3><h4>"+totalrejectWorkflowInstance+"</h4>");
 	});
 
 }
